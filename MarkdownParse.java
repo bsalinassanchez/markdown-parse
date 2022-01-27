@@ -18,6 +18,7 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);//lastIndexOf(")");//indexOf(")", openParen);
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
+            System.out.println("current index: " + currentIndex);
         }
         return toReturn;
     }
@@ -32,5 +33,6 @@ public class MarkdownParse {
         //for loop: for each content check for "](" and "https://"
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
+        System.out.println("all links have been returned");
     }
 }
