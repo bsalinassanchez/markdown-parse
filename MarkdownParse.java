@@ -12,10 +12,9 @@ public class MarkdownParse {
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
-            //we need to find a closing bracket followed immediately by an opening parenthesis
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
-            int closeParen = markdown.indexOf(")", openParen);//lastIndexOf(")");//indexOf(")", openParen);
+            int closeParen = markdown.indexOf(")", openParen);
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
             System.out.println("current index: " + currentIndex);
@@ -31,6 +30,7 @@ public class MarkdownParse {
 	    String contents = Files.readString(fileName);
         //split contents into string array
         //for loop: for each content check for "](" and "https://"
+        System.out.println(contents);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
         System.out.println("all links have been returned");
