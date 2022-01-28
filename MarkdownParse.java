@@ -22,7 +22,9 @@ public class MarkdownParse {
                     int indexOfOpenBracket = markdown[i].indexOf("[", currentIndex);
                     int indexOfMarker = markdown[i].indexOf("](", indexOfOpenBracket);
                     int closeParen = markdown[i].indexOf(")", indexOfMarker);
-                    toReturn.add(markdown[i].substring(indexOfMarker+2, closeParen));
+                    if(!markdown[i].substring(indexOfMarker+2, closeParen).isEmpty()) {
+                        toReturn.add(markdown[i].substring(indexOfMarker+2, closeParen));
+                    }
                     currentIndex = closeParen;
                 //}
             }
