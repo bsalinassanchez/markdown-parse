@@ -14,14 +14,18 @@ public class MarkdownParse {
         for(int i = 0; i < markdown.length; i++) {
             //checks that a line is not empty
             if(markdown[i].length() != 0) {
+                int currentIndex = 0;
+            while(markdown[i].substring(currentIndex).contains("[") && markdown[i].substring(currentIndex).contains("](") && markdown[i].substring(currentIndex).contains(")")) {
                 //checks that a line contains brackets and parenthesis for links [...](...)
                 //in the correct order
-                if(markdown[i].contains("[") && markdown[i].contains("](") && markdown[i].contains(")")) {
-                    int indexOfOpenBracket = markdown[i].indexOf("[");
+                //if(markdown[i].contains("[") && markdown[i].contains("](") && markdown[i].contains(")")) {
+                    int indexOfOpenBracket = markdown[i].indexOf("[", currentIndex);
                     int indexOfMarker = markdown[i].indexOf("](", indexOfOpenBracket);
                     int closeParen = markdown[i].indexOf(")", indexOfMarker);
                     toReturn.add(markdown[i].substring(indexOfMarker+2, closeParen));
-                }
+                    currentIndex = closeParen;
+                //}
+            }
             }
         }
         return toReturn;
@@ -30,7 +34,7 @@ public class MarkdownParse {
         if(args.length == 0) {
             System.out.println("no argument");
             return;
-        }	
+        } 
         String[] splitContents = Files.readAllLines(Paths.get(args[0])).toArray(String[]::new);
 
         ArrayList<String> links = getLinks(splitContents);

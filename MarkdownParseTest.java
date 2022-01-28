@@ -4,6 +4,7 @@ import java.util.List;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MarkdownParseTest {
     @Test
@@ -15,6 +16,6 @@ public class MarkdownParseTest {
     public void getLinks() throws IOException {
         assertEquals("checks that the method getLinks give correct output",
             List.of("https://something.com", "some-page.html").toString(), 
-            MarkdownParse.getLinks(Files.readString(Path.of("test-file.md"))).toString());
+            MarkdownParse.getLinks(Files.readAllLines(Paths.get("test-file.md")).toArray(String[]::new)).toString());
     }
 }
