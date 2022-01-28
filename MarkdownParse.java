@@ -21,7 +21,7 @@ public class MarkdownParse {
         //    System.out.println("current index: " + currentIndex);
         //}
 
-        //using a for loop instead of a while loop
+        //using a for loop instead of a while loop(different implementation of method)
         for(int i = 0; i < markdown.length; i++) {
             if(markdown[i].length() != 0) {
                 if(markdown[i].contains("](")) {
@@ -40,7 +40,7 @@ public class MarkdownParse {
         }
 		//Path fileName = Path.of(args[0]);
 	    //String contents = Files.readString(fileName);
-        //split contents into string array
+        //split contents into string array(This idea is inspired by a CSE11 PA7)
         String[] splitContents = Files.readAllLines(Paths.get(args[0])).toArray(String[]::new);
 
         //System.out.println(contents);
