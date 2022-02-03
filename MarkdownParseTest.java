@@ -15,6 +15,6 @@ public class MarkdownParseTest {
     public void getLinks() throws IOException {
         assertEquals("checks that the method getLinks give correct output",
             List.of("https://something.com", "some-page.html"), 
-            MarkdownParse.getLinks(Files.readString(Paths.get("/Users/brandon/Documents/GitHub/markdown-parse/test-file.md"))));
+            MarkdownParse.getLinks(Files.readString(Paths.get("test-file.md"))));
     }
 }
