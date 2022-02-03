@@ -17,4 +17,12 @@ public class MarkdownParseTest {
             List.of("https://something.com", "some-page.html"), 
             MarkdownParse.getLinks(Files.readString(Paths.get("test-file.md"))));
     }
+
+
+    @Test
+    public void spaceTest() throws IOException {
+        assertEquals("checks that link is not printed",
+            List.of(""),
+            MarkdownParse.getLinks(Files.readString(Paths.get("failureinducing.md"))));
+    }
 }
