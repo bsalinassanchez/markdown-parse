@@ -22,7 +22,7 @@ public class MarkdownParseTest {
     @Test
     public void spaceTest() throws IOException {
         assertEquals("checks that link is not printed",
-            List.of(""),
+            List.of(),
             MarkdownParse.getLinks(Files.readString(Paths.get("failureinducing.md"))));
     }
 }
