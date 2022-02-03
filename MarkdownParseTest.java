@@ -10,11 +10,4 @@ public class MarkdownParseTest {
     public void addition() {
         assertEquals(2, 1 + 1);
     }
-
-    @Test
-    public void getLinks() throws IOException {
-        assertEquals("checks that the method getLinks give correct output",
-            List.of("https://something.com", "some-page.html").toString(), 
-            MarkdownParse.getLinks(Files.readAllLines(Paths.get("test-file.md")).toArray(String[]::new)).toString());
-    }
 }
