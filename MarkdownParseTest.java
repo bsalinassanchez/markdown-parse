@@ -13,7 +13,7 @@ public class MarkdownParseTest {
     }
     @Test
     public void getLinks() throws IOException {
-        assertEquals("checks that the method getLinks (more words) give correct output",
+        assertEquals("checks that the method getLinks (words) give correct output",
             List.of("https://something.com", "some-page.html"), 
             MarkdownParse.getLinks(Files.readString(Paths.get("test-file.md"))));
     }
