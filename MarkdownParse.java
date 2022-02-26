@@ -16,21 +16,36 @@ public class MarkdownParse {
             int nextCloseBracket = markdown.indexOf("](", nextOpenBracket);
             //int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", nextCloseBracket);
-            int notUsed = 0;
+
+
+            int firstBacktick = markdown.indexOf("`", currentIndex);
+            int secondBacktick = -1;
+            Boolean between = false;
+            if(firstBacktick != -1) {
+                secondBacktick = markdown.indexOf("`", firstBacktick);
+            }
+
+            if(firstBacktick != -1 && secondBacktick != -1) {
+                if(currentIndex >= firstBacktick && currentIndex <= secondBacktick) {
+                    between = true;
+                }
+            }
             
             if (nextOpenBracket == -1 || nextCloseBracket == -1 /*|| openParen == -1 */|| closeParen == -1)
             {
                 break;
             }
 
-            if (imageIndex > -1 && imageIndex == nextOpenBracket - 1)
+            if (imageIndex > -1 && imageIndex == nextOpenBracket - 1 || between == true)
             {
                 currentIndex = closeParen + 1;
             }
             else
             {
+                
                 toReturn.add(markdown.substring(nextCloseBracket + 2, closeParen));
                 currentIndex = closeParen + 1;
+                
             }
         }
         return toReturn;
