@@ -31,12 +31,12 @@ public class MarkdownParse {
                 }
             }
             
-            if (nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1)
+            if (nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1 || between == true)
             {
                 break;
             }
 
-            if (imageIndex > -1 && imageIndex == nextOpenBracket - 1 || (!(nextCloseBracket == openParen-1) && between == true))
+            if (imageIndex > -1 && imageIndex == nextOpenBracket - 1 || !(nextCloseBracket == openParen-1))
             {
                 currentIndex = closeParen + 1;
             }
